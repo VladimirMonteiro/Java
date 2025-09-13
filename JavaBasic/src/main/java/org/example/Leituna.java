@@ -1,4 +1,4 @@
-package org.example.atividades;
+package org.example;
 
 import java.util.Locale;
 import java.util.Scanner;
