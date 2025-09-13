@@ -23,5 +23,7 @@ public class Atv11 {
         } catch (InputMismatchException e) {
             System.out.println("Input inválido.");
         }
+
+        scanner.close();
     }
 }
