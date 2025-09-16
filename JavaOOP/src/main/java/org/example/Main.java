@@ -2,6 +2,7 @@ package org.example;
 
 
 import org.example.atividades.Aluno;
+import org.example.atividades.ConversorMoeda;
 import org.example.atividades.IdadePessoa;
 import org.example.atividades.Produto;
 
@@ -25,6 +26,11 @@ public class Main {
         Aluno aluno = new Aluno();
         aluno.setNota1(10);
         aluno.setNota2(10);
-        System.out.println(aluno.calcularMedia());
+
+        // Atividade 5
+        ConversorMoeda conversorMoeda = new ConversorMoeda();
+        System.out.println(conversorMoeda.converterDolarParaReal(5));
+
+
     }
 }
