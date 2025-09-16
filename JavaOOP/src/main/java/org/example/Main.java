@@ -1,10 +1,7 @@
 package org.example;
 
 
-import org.example.atividades.Aluno;
-import org.example.atividades.ConversorMoeda;
-import org.example.atividades.IdadePessoa;
-import org.example.atividades.Produto;
+import org.example.atividades.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -30,6 +27,11 @@ public class Main {
         // Atividade 5
         ConversorMoeda conversorMoeda = new ConversorMoeda();
         System.out.println(conversorMoeda.converterDolarParaReal(5));
+
+        // Atividade 6
+        CalculadoraSalaRetangular c1 = new CalculadoraSalaRetangular();
+        System.out.println(c1.calcularArea(5,5));
+        System.out.println(c1.calcularPerimetro(5,5));
 
 
     }
