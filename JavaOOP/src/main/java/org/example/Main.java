@@ -5,6 +5,9 @@ import org.example.atividades.Filme;
 import org.example.atividades.Pessoa;
 import org.example.atividades.Produto;
 import org.example.atividades.ProdutoPerecivel;
+import org.example.atividades.atv1.Circulo;
+import org.example.atividades.atv1.Forma;
+import org.example.atividades.atv1.Quadrado;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -71,5 +74,13 @@ public class Main {
         produtos.getFirst();
         var proPerecivel = new ProdutoPerecivel("comida", 200, 10, new Date());
         System.out.println(proPerecivel);
+
+        System.out.println("\n");
+        var figuras = new ArrayList<Forma>();
+        figuras.add(new Quadrado(10, 10));
+        figuras.add(new Quadrado( 2, 3));
+        figuras.add(new Circulo(10));
+        figuras.add(new Circulo(3));
+        figuras.forEach(figura -> System.out.printf("%.2f\n", figura.calcularArea()));
     }
 }
