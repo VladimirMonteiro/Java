@@ -2,6 +2,7 @@ package org.example;
 
 
 import org.example.atividades.Filme;
+import org.example.atividades.Pessoa;
 
 import java.util.ArrayList;
 
@@ -41,8 +42,26 @@ public class Main {
         var filmes = new ArrayList<Filme>();
         filmes.add(filme1);
 
-
         System.out.println(filmes);
 
+        var p1 = new Pessoa();
+        p1.setNome("Fernando");
+        p1.setIdade(20);
+
+        var p2 = new Pessoa();
+        p2.setNome("Alberto");
+        p2.setIdade(11);
+
+        var p3 = new Pessoa();
+        p3.setNome("Lara");
+        p3.setIdade(24);
+
+        var listaDePessoas = new ArrayList<Pessoa>();
+        listaDePessoas.add(p1);
+        listaDePessoas.add(p2);
+        listaDePessoas.add(p3);
+        System.out.printf("Quantidade de pesosas %d\n", listaDePessoas.size());
+        System.out.printf("Primeira pessoa da lista: %s%n", listaDePessoas.getFirst());
+        listaDePessoas.forEach(System.out::println);
     }
 }
