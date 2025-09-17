@@ -3,6 +3,11 @@ package org.example.atividades;
 public class Filme extends Titulo {
     String diretor;
 
+    public Filme(String nome, int anoDeLancamento) {
+        super(nome, anoDeLancamento);
+    }
+
+
     public String getDiretor() {
         return diretor;
     }

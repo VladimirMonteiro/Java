@@ -8,6 +8,13 @@ Adicione um método aplicarDesconto que recebe um valor percentual e reduz o pre
 public class Produto {
     private String nome;
     private double preco;
+    private double quantiity;
+
+    public Produto(String nome, double preco, double quantiity) {
+        this.nome = nome;
+        this.preco = preco;
+        this.quantiity = quantiity;
+    }
 
     public void aplicarDesconto(double porcentual) {
         preco -= (porcentual/ 100) * preco;
@@ -27,5 +34,14 @@ public class Produto {
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", quantiity=" + quantiity +
+                '}';
     }
 }

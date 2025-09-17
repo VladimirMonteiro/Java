@@ -3,8 +3,11 @@ package org.example;
 
 import org.example.atividades.Filme;
 import org.example.atividades.Pessoa;
+import org.example.atividades.Produto;
+import org.example.atividades.ProdutoPerecivel;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
@@ -36,9 +39,7 @@ public class Main {
 //        System.out.println(c1.calcularArea(5,5));
 //        System.out.println(c1.calcularPerimetro(5,5));
 
-        var filme1 = new Filme();
-        filme1.setNome("Top gun: Maverick");
-        filme1.setAnoDeLancamento(2021);
+        var filme1 = new Filme("Top gun: Maverick", 2021);
         var filmes = new ArrayList<Filme>();
         filmes.add(filme1);
 
@@ -63,5 +64,12 @@ public class Main {
         System.out.printf("Quantidade de pesosas %d\n", listaDePessoas.size());
         System.out.printf("Primeira pessoa da lista: %s%n", listaDePessoas.getFirst());
         listaDePessoas.forEach(System.out::println);
+
+        var produto1 = new Produto("Mause", 20.00, 10);
+        var produtos = new ArrayList<Produto>();
+        produtos.add(produto1);
+        produtos.getFirst();
+        var proPerecivel = new ProdutoPerecivel("comida", 200, 10, new Date());
+        System.out.println(proPerecivel);
     }
 }
