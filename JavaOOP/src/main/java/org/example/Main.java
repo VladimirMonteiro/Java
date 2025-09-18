@@ -1,16 +1,12 @@
 package org.example;
 
 
-import org.example.atividades.Filme;
-import org.example.atividades.Pessoa;
-import org.example.atividades.Produto;
-import org.example.atividades.ProdutoPerecivel;
+import org.example.atividades.*;
 import org.example.atividades.atv1.Circulo;
 import org.example.atividades.atv1.Forma;
 import org.example.atividades.atv1.Quadrado;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -43,8 +39,10 @@ public class Main {
 //        System.out.println(c1.calcularPerimetro(5,5));
 
         var filme1 = new Filme("Top gun: Maverick", 2021);
+        var filme2 = new Filme("Avatar", 2023);
         var filmes = new ArrayList<Filme>();
         filmes.add(filme1);
+        filmes.add(filme2);
 
         System.out.println(filmes);
 
@@ -82,5 +80,17 @@ public class Main {
         figuras.add(new Circulo(10));
         figuras.add(new Circulo(3));
         figuras.forEach(figura -> System.out.printf("%.2f\n", figura.calcularArea()));
+
+        List<String> nomes = new ArrayList<>();
+        nomes.add("Vladimir");
+        nomes.add("Pedro");
+        nomes.add("Fernando");
+        nomes.add("Ana");
+
+        Collections.sort(nomes);
+        System.out.println(nomes);
+
+      filmes.sort(Comparator.comparing(Titulo::getAnoDeLancamento));
+        System.out.println(filmes);
     }
 }
