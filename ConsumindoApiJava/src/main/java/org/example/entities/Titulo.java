@@ -1,9 +1,8 @@
 // src > br.com.alura.screenmatch.modelos > Titulo.java
 
-package org.example.atividades;
+package org.example.entities;
 
 public class Titulo implements Comparable<Titulo> {
-
     private String nome;
     private int anoDeLancamento;
     private boolean incluidoNoPlano;
@@ -16,58 +15,71 @@ public class Titulo implements Comparable<Titulo> {
         this.anoDeLancamento = anoDeLancamento;
     }
 
+    public Titulo(TituloOmdb meuTituloOmdb) {
+        this.nome = meuTituloOmdb.title();
+        this.anoDeLancamento = Integer.valueOf(meuTituloOmdb.year());
+        this.duracaoEmMinutos = Integer.valueOf(meuTituloOmdb.runtime().substring(0, 2));
+    }
+
     public String getNome() {
         return nome;
-    }
-
-    public int getAnoDeLancamento() {
-        return anoDeLancamento;
-    }
-
-    public boolean isIncluidoNoPlano() {
-        return incluidoNoPlano;
-    }
-
-    public int getDuracaoEmMinutos() {
-        return duracaoEmMinutos;
-    }
-
-    public int getTotalDeAvaliacoes() {
-        return totalDeAvaliacoes;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    public int getAnoDeLancamento() {
+        return anoDeLancamento;
+    }
+
     public void setAnoDeLancamento(int anoDeLancamento) {
         this.anoDeLancamento = anoDeLancamento;
+    }
+
+    public boolean isIncluidoNoPlano() {
+        return incluidoNoPlano;
     }
 
     public void setIncluidoNoPlano(boolean incluidoNoPlano) {
         this.incluidoNoPlano = incluidoNoPlano;
     }
 
+    public int getDuracaoEmMinutos() {
+        return duracaoEmMinutos;
+    }
+
     public void setDuracaoEmMinutos(int duracaoEmMinutos) {
         this.duracaoEmMinutos = duracaoEmMinutos;
     }
 
-    public void exibeFichaTecnica(){
+    public int getTotalDeAvaliacoes() {
+        return totalDeAvaliacoes;
+    }
+
+    public void exibeFichaTecnica() {
         System.out.println("Nome do filme: " + nome);
         System.out.println("Ano de lançamento: " + anoDeLancamento);
     }
 
-    public void avalia(double nota){
+    public void avalia(double nota) {
         somaDasAvaliacoes += nota;
         totalDeAvaliacoes++;
     }
 
-    public double pegaMedia(){
+    public double pegaMedia() {
         return somaDasAvaliacoes / totalDeAvaliacoes;
     }
 
     @Override
     public int compareTo(Titulo titulo) {
         return this.getNome().compareTo(titulo.getNome());
+    }
+
+    @Override
+    public String toString() {
+        return "nome='" + nome + '\'' +
+                ", anoDeLancamento=" + anoDeLancamento +
+                ", duracaoEmMinutos=" + duracaoEmMinutos;
     }
 }
