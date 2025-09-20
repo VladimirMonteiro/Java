@@ -7,6 +7,7 @@ import org.example.entities.Titulo;
 import org.example.entities.TituloOmdb;
 import org.example.exceptions.ErroDeConversaoDeAnoException;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -43,6 +44,9 @@ public class Main {
             System.out.println(meuTituloOmdb);
             Titulo meuTitulo = new Titulo(meuTituloOmdb);
             System.out.println(meuTitulo);
+            FileWriter escrita = new FileWriter("Titulo.txt");
+            escrita.write(meuTitulo.toString());
+            escrita.close();
         } catch (NumberFormatException e) {
             System.out.println("Aconteceu um erro: ");
             System.out.println(e.getMessage());
