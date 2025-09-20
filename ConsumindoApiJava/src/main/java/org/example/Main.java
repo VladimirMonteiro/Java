@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.example.entities.Titulo;
 import org.example.entities.TituloOmdb;
+import org.example.exceptions.ErroDeConversaoDeAnoException;
 
 import java.io.IOException;
 import java.net.URI;
@@ -23,25 +24,32 @@ public class Main {
 
         // Codifica espaços e acentos para URL
         String encodedSearch = URLEncoder.encode(search, StandardCharsets.UTF_8);
-
         String address = "http://www.omdbapi.com/?t=" + encodedSearch + "&apikey=e027d2e4";
+        try {
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(address))
+                    .build();
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(address))
-                .build();
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            // Exibe status e corpo da resposta
+            System.out.println("Status: " + response.statusCode());
+            System.out.println("Body: " + response.body());
 
-        // Exibe status e corpo da resposta
-        System.out.println("Status: " + response.statusCode());
-        System.out.println("Body: " + response.body());
+            Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
 
-        Gson gson = new GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE).create();
-
-        TituloOmdb meuTituloOmdb = gson.fromJson(response.body(), TituloOmdb.class);
-        System.out.println(meuTituloOmdb);
-        Titulo meuTitulo = new Titulo(meuTituloOmdb);
-        System.out.println(meuTitulo);
+            TituloOmdb meuTituloOmdb = gson.fromJson(response.body(), TituloOmdb.class);
+            System.out.println(meuTituloOmdb);
+            Titulo meuTitulo = new Titulo(meuTituloOmdb);
+            System.out.println(meuTitulo);
+        } catch (NumberFormatException e) {
+            System.out.println("Aconteceu um erro: ");
+            System.out.println(e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Algum erro de argumento na busca.");
+        } catch (ErroDeConversaoDeAnoException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
